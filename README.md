@@ -28,11 +28,16 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     ```
 1. Push the S3-enabled Locust container to ECR
     ```
-    docker tag jpbarto/locust ${REPO_URI}:latest
+    docker tag local/locust ${REPO_URI}:latest
     docker push ${REPO_URI}:latest
     ```
-1. Update the `docker-compose.yaml` file to reference the ECR repository
 1. Start the composition
     ```
     docker compose up
     ```
+
+## For More
+The following articles may be useful:
+- https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/
+- https://aws.amazon.com/blogs/aws/announcing-aws-graviton2-support-for-aws-fargate-get-up-to-40-better-price-performance-for-your-serverless-containers/
+- https://aws.amazon.com/blogs/containers/how-to-build-your-containers-for-arm-and-save-with-graviton-and-spot-instances-on-amazon-ecs/
