@@ -4,6 +4,7 @@ import uuid
 
 AUID = uuid.uuid4()
 
+
 class QuickstartUser(HttpUser):
     wait_time = between(1, 2)
 
@@ -12,4 +13,4 @@ class QuickstartUser(HttpUser):
         self.client.get("/")
 
     def on_start(self):
-        print ("Locust agent {} is running...".format (AUID})
+        print("Locust agent {} is running...".format(AUID))
