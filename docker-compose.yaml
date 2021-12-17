@@ -10,3 +10,5 @@ services:
   worker:
     image: ${ACCT_NO}.dkr.ecr.${REGION}.amazonaws.com/s3locust:latest
     command: --worker --master-host master
+    deploy:
+      replicas: 5

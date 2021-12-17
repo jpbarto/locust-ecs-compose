@@ -36,6 +36,10 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     ```
     docker compose up
     ```
+1. To scale the number of workers:
+    ```
+    docker compose up --scale worker=10
+    ```
 
 ## For More
 The following articles may be useful:
