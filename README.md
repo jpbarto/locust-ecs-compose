@@ -25,6 +25,7 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     ACCT_NO=$(aws sts get-caller-identity --query 'Account' --output text)
     aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCT_NO}.dkr.ecr.${REGION}.amazonaws.com
     REPO_URI=$(aws ecr create-repository --repository-name s3locust --region ${REGION} --query 'repository.repositoryUri' --output text)
+    export REGION ACCT_NO REPO_URI
     ```
 1. Push the S3-enabled Locust container to ECR
     ```
