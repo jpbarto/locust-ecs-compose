@@ -41,6 +41,8 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     docker compose up --scale worker=10
     ```
 
+Now you can access the Locust deployment using the ALB address on port 8089
+
 ## For More
 The following articles may be useful:
 - https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/
