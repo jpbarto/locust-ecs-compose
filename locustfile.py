@@ -6,7 +6,8 @@ AUID = uuid.uuid4()
 
 
 class QuickstartUser(HttpUser):
-    wait_time = between(1, 2)
+    wait_time = constant_pacing(1) # execute at most once per second
+    # wait_time = between(1, 2)
 
     @task
     def hello_world(self):
