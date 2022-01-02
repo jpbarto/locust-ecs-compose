@@ -5,13 +5,13 @@ set -e
 if [ -z "$S3LOCUSTFILE" ]; then
     cat >/home/locust/locustfile.py <<EOF
 import time
-from locust import HttpUser, task, between
+from locust import HttpUser, task, between, constant_pacing
 import uuid
 
 AUID = uuid.uuid4()
 
 class QuickstartUser(HttpUser):
-    wait_time = between(1, 2)
+    wait_time = constant_pacing(1)
 
     @task
     def hello_world(self):
