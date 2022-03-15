@@ -1,14 +1,22 @@
 version: '3'
 
 services:
-  master:
+  swarm-leader:
     image: ${ACCT_NO}.dkr.ecr.${REGION}.amazonaws.com/s3locust:latest
     ports:
-     - "8089:8089"
-    command: --master -H http://master:8089
-  
+      - "8089:8089"
+    command: "--master -H http://swarm-leader:8089"
+    environment:
+      S3LOCUSTFILE: s3://cf-templates-o4392ff8cnct-eu-west-1/locust-worker.py
+    x-aws-policies:
+      - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+
   worker:
     image: ${ACCT_NO}.dkr.ecr.${REGION}.amazonaws.com/s3locust:latest
-    command: --worker --master-host master
+    command: "--worker --master-host swarm-leader"
+    environment:
+      S3LOCUSTFILE: s3://cf-templates-o4392ff8cnct-eu-west-1/locust-worker.py
     deploy:
       replicas: 5
+    x-aws-policies:
+      - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"

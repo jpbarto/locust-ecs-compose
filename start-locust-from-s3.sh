@@ -17,6 +17,10 @@ class QuickstartUser(HttpUser):
     def hello_world(self):
         self.client.get("/")
 
+    @task
+    def hello_data(self):
+        self.client.get("/data")
+
     def on_start(self):
         print("Locust agent {} is running...".format(AUID))
 EOF
