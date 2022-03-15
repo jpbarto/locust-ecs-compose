@@ -14,11 +14,6 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     ```
     docker buildx build --platform linux/amd64 . -t local/s3locust
     ```
-1. Set the local docker context to point to ECS
-    ```
-    docker context create ecs myecscluster
-    docker context use myecscluster
-    ```
 1. Create an ECR repository and log in to ECR
     ```
     REGION=${AWS_DEFAULT_REGION}
@@ -31,6 +26,11 @@ https://github.com/locustio/locust/blob/master/examples/docker-compose/docker-co
     ```
     docker tag local/s3locust ${REPO_URI}:latest
     docker push ${REPO_URI}:latest
+    ```
+1. Set the local docker context to point to ECS
+    ```
+    docker context create ecs myecscluster
+    docker context use myecscluster
     ```
 1. Start the composition
     ```
